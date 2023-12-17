@@ -19,7 +19,7 @@ const MapScreen = () => {
                             />
             </View>
         </TouchableOpacity>
-  )
+  );
 }
 
 export default MapScreen;

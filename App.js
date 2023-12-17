@@ -8,19 +8,23 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
 
 // TODO
 // 1)Google Places API
 // 2)Google Directions API
 // 3)Distance Metrics API
-export default function App() {
-  const Stack = createNativeStackNavigator();
+export default function App() 
+{
+  // const Stack = createNativeStackNavigator();
+  const Tab = createBottomTabNavigator();
 
   return (
     <Provider store={store}>
      <NavigationContainer>
       <SafeAreaProvider>
-      <Stack.Navigator>
+      {/* <Stack.Navigator>
         <Stack.Screen 
           name='HomeScreen'
           component={HomeScreen}
@@ -35,7 +39,15 @@ export default function App() {
             headerShown:false,
           }}
         />
-      </Stack.Navigator>
+      </Stack.Navigator> */}
+      <Tab.Navigator>
+        <Tab.Screen name="HomeScreen" component={HomeScreen} />
+        <Tab.Screen name="MapScreen" component={MapScreen} />
+         <Tab.Screen name="Payment" component={HomeScreen} />
+        <Tab.Screen name="Orders" component={MapScreen} />
+        <Tab.Screen name="Profile" component={MapScreen} />
+
+      </Tab.Navigator>
       </SafeAreaProvider>
       </NavigationContainer>
     </Provider>
