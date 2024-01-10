@@ -24,30 +24,13 @@ export default function App()
     <Provider store={store}>
      <NavigationContainer>
       <SafeAreaProvider>
-      {/* <Stack.Navigator>
-        <Stack.Screen 
-          name='HomeScreen'
-          component={HomeScreen}
-          options ={{
-            headerShown:false,
-          }}
-        />
-        <Stack.Screen 
-          name='MapScreen'
-          component={MapScreen}
-          options ={{
-            headerShown:false,
-          }}
-        />
-      </Stack.Navigator> */}
-      <Tab.Navigator>
-        <Tab.Screen name="HomeScreen" component={HomeScreen} />
-        <Tab.Screen name="MapScreen" component={MapScreen} />
-         <Tab.Screen name="Payment" component={HomeScreen} />
-        <Tab.Screen name="Orders" component={MapScreen} />
-        <Tab.Screen name="Profile" component={MapScreen} />
-
-      </Tab.Navigator>
+        <Tab.Navigator screenOptions={{headerShown: false}}>
+          <Tab.Screen name="HomeScreen" component={HomeScreen} />
+          <Tab.Screen name="MapScreen" component={MapScreen} />
+          <Tab.Screen name="Payment" component={HomeScreen} />
+          <Tab.Screen name="Orders" component={MapScreen} />
+          <Tab.Screen name="Profile" component={MapScreen} />
+        </Tab.Navigator>
       </SafeAreaProvider>
       </NavigationContainer>
     </Provider>
