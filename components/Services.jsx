@@ -6,14 +6,14 @@ import { useNavigation } from '@react-navigation/native';
 import AssistanceImage from '../assets/assistance.jpg';
 import SelfImage from '../assets/self.jpg';
 import EmergencyImage from '../assets/health-insurance.png'; 
-import CCImage from '../assets/customer care.jpg';
+import CCImage from '../assets/customer-care.jpg';
 
 const data = [
         {
             id: 1,
             title: 'Assistance',
             image: AssistanceImage,
-            screen: 'MapScreen'
+            screen: 'OtherScreen'
         },
         {
             id: 2,
@@ -49,19 +49,20 @@ const Services = () => {
                 numColumns={2} // Set the number of columns to 2 for a 2x2 grid
                 renderItem={({item})=> (
                     <TouchableOpacity 
-                    onPress={()=>navigation.navigate(item.screen)}
-                    style={tw`p-4 bg-gray-200 m-2 w-40 rounded `}>
+                    onPress={()=>{navigation.navigate(item.screen);
+                            console.log('Navigating to:', item.screen);}}
+                    style={tw`p-4 bg-white m-2 rounded shadow`}>
                        <View>
                             <Image 
-                                style={{width: 120, height: 120, resizeMode: 'contain'}}
-                                source={AssistanceImage} />
+                                style={{width: 100, height: 120, resizeMode: 'contain'}}
+                                source={item.image} />
                             <Text style={styles.text}>{item.title}</Text>
-                            <Icon
+                            {/* <Icon
                                 style={tw`p-2 bg-black rounded-full w-10 mt-4`}
                                 type='antdesign'
                                 name='arrowright'
                                 color='white'
-                            />
+                            /> */}
                        </View>
                     </TouchableOpacity>
                 )}      
@@ -78,6 +79,7 @@ const styles = StyleSheet.create({
         marginTop:2,
         fontWeight:'bold',
         fontSize:15,
+        textAlign:'center',
     },
     
 });
