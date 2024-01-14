@@ -51,7 +51,7 @@ const Services = () => {
                     <TouchableOpacity 
                     onPress={()=>{navigation.navigate(item.screen);
                             console.log('Navigating to:', item.screen);}}
-                    style={tw`p-4 bg-white m-2 rounded shadow`}>
+                    style={tw`p-4 bg-white m-2 rounded shadow w-36`}>
                        <View>
                             <Image 
                                 style={{width: 100, height: 120, resizeMode: 'contain'}}
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     text: {
         marginTop:2,
         fontWeight:'bold',
-        fontSize:15,
+        fontSize:12,
         textAlign:'center',
     },
     

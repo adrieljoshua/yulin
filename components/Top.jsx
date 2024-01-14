@@ -6,7 +6,7 @@ import { TouchableOpacity } from 'react-native'
 const Top = () => {
   return (
     <View style={styles.topContainer}>
-      <Text style={{fontSize:35}}>YULIN!</Text>
+      <Text style={{fontSize:35, color:'#663399'}}>YULIN!</Text>
         <TouchableOpacity>
           <Image style={{ width: 38, height: 38, resizeMode: 'contain'}}
                 source={UserImage} /> 

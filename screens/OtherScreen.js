@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity, FlatList } from 'react-native'
 import React from 'react'
 import tw from 'tailwind-react-native-classnames';
 import { Image,SafeAreaView,ScrollView } from 'react-native';
@@ -9,10 +9,15 @@ import { RadioButton } from 'react-native-paper';
 import { useState } from 'react';
 import Location from '../assets/1x/baseline_place_black_24dp.png';
 
+import WheelChairsList from '../components/WheelChairsList';
+
+
 const OtherScreen = () => {
     const navigation = useNavigation();
     const [wheelChairChecked, setWheelChairChecked] = useState('');
     const [AssistantChecked, setAssistantChecked] = useState('');
+
+   
 
   return (
     <SafeAreaView style={tw`bg-white h-full`}>
@@ -22,7 +27,7 @@ const OtherScreen = () => {
                 >    
             <View style={{padding:20}}>
                 <Icon
-                                style={tw`p-2 bg-black rounded-full w-10 mt-4`}
+                                style={tw`p-2 bg-purple-900 rounded-full w-10 mt-4`}
                                 type='antdesign'
                                 name='arrowleft'
                                 color='white'
@@ -31,8 +36,8 @@ const OtherScreen = () => {
         </TouchableOpacity>
         <Image style={{ width: '100%', height: 175, resizeMode: 'contain' }}
                 source={AssistanceImage} />
-        <View style={styles.wheelChairBox}>
-            <Text style={styles.WheelChairText}>Do you require a wheelchair? </Text>
+        <View style={styles.Box}>
+            <Text style={styles.Text}>Do you require a wheelchair? </Text>
             <RadioButton.Group onValueChange={value =>setWheelChairChecked(value)} value={wheelChairChecked}>
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
           <RadioButton value="yes" />
@@ -46,8 +51,8 @@ const OtherScreen = () => {
       </RadioButton.Group>
         </View>
 
-        <View style={styles.AssistantBox}>
-            <Text style={styles.AssistantText}>Prefered gender for assisting individual? </Text>
+        <View style={styles.Box}>
+            <Text style={styles.Text}>Prefered gender for assisting individual </Text>
             <RadioButton.Group onValueChange={value =>setAssistantChecked(value)} value={AssistantChecked}>
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
           <RadioButton value="male" />
@@ -66,11 +71,17 @@ const OtherScreen = () => {
       </RadioButton.Group>
         </View>
 
-        <View style={{elevation:3}}>
+
+        <View style={styles.Box}>
+         <Text style={{fontSize:20, fontWeight:'900', color:'#663399',margin:20,textAlign:'center'}}>SELECT WHEELCHAIR </Text>
+
+      <WheelChairsList/>
+      </View>
+        <View>
             <TouchableOpacity onPress={()=>navigation.navigate('MapScreen')}
                 style={styles.mapButton}
                 >    
-                <Text style={tw`text-white text-center text-xl`}>SET DELIVERY LOCATION</Text>
+                <Text style={tw`text-gray-100 text-center text-lg`}>SET DELIVERY LOCATION</Text>
                 <Image source={Location}></Image>
             </TouchableOpacity>
         </View>
@@ -83,40 +94,30 @@ const OtherScreen = () => {
 export default OtherScreen;
 
 const styles = StyleSheet.create({
-    wheelChairBox: {
+    Box: {
+        flexDirection:'column',
         backgroundColor: 'white',
         borderRadius: 10,
         marginBottom:10,
         marginLeft:20,
         marginRight:20,
-        marginTop:3,
-        elevation:3,
-        fontFamily:'',
+        shadowColor: '#663399',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.5,
+        shadowRadius: 2,
+        elevation: 2,
         marginTop:20,
         padding:10,
+      
     },
-    WheelChairText:{
-        fontSize:20,
-        padding:15,
+    Text:{
+        fontSize:17,
+        margin:15,
+        fontWeight:'900',
+        color:'#663399',
     },
 
-    AssistantBox: {
-
-        backgroundColor: 'white',
-        borderRadius: 10,
-        marginBottom:10,
-        marginLeft:20,
-        marginRight:20,
-        marginTop:3,
-        elevation:3,
-        fontFamily:'',
-        marginTop:20,
-        padding:10,
-    },
-    AssistantText:{
-        fontSize:20,
-        padding:15,
-    },
+    
     mapButton: {
         marginBottom:20,
         marginLeft:20,
@@ -126,5 +127,6 @@ const styles = StyleSheet.create({
         marginTop:20,
         flexDirection:'row',
         justifyContent:'space-around',
-    }
+    },
+
 })
